@@ -1,0 +1,416 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Journal Article
+% LaTeX Template
+% Version 1.4 (15/5/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com) with extensive modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[14pt,twocolumn ]{article}
+
+\usepackage{blindtext} % Package to generate dummy text throughout this template
+\usepackage{adjustbox}
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[utf8]{inputenc} % Unicode
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[separate-uncertainty=true]{siunitx}
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{bm}
+\newenvironment{notalistitem}
+{\begin{itemize}
+\renewcommand{\labelitemi}{$\triangleright$} 
+\item}
+
+\usepackage{geometry}% http://ctan.org/pkg/geometry
+\usepackage{graphicx}
+
+
+\usepackage[english]{babel} % Language hyphenation and typographical rules
+
+%\usepackage[hmarginratio=1:1,top=32mm,columnsep=15pt,a4paper,margin=1in, footskip=0.25in]{geometry} % Document margins
+%\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+%\usepackage{booktabs} % Horizontal rules in tables
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Experimento 2 - PS6 } % Custom header text
+\fancyfoot[C]{\thepage} % Custom footer text
+
+\usepackage{titling} % Customizing the title section
+
+\usepackage{hyperref} % For hyperlinks in the PDF
+\pdfsuppresswarningpagegroup=1
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-6\baselineskip} % Move the title up
+%\begin{center}
+\pretitle{\centering \Huge\bfseries }  % Article title formatting
+\posttitle{\begin{center} \end{center} }% Article title closing formatting
+
+\title{Resistividade elétrica} % Article title
+
+\author{
+\textsc{Raylsson Magalhães \,\, Gustavo judice} \\[1ex] % Your name
+\normalsize Universidade Federal de Minas Gerais\\ % Your institution
+%\normalsize \href{mailto:john@smith.com}{john@smith.com} % Your email address
+%\and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+%\textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+%\normalsize University of Utah \\ % Second author's institution
+%\normalsize \href{mailto:jane@smith.com}{jane@smith.com} % Second author's email address
+}
+\date{PS6 \\ \today} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+\begin{abstract}
+\noindent Cada material condutor possui uma certa resistividade associada a ele e se deve pelo comportamento do sólido em escalas microscópicas. Esse experimento tem como objetivo analisar a resistividade de um fio ao relacionar sua resistência  com diversos de seus comprimentos e posteriormente a partir da resistividade encontrada identificar o tipo de condutor e material estudado.   % Dummy abstract text - replace \blindtext with your abstract text
+\end{abstract}
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+}
+\usepackage{systeme}
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+%\begin{multicols}{2}
+\section{Introdução}
+
+
+
+\lettrine[nindent=0em,lines=3]{Q}uando temos um circuito simples sem nenhum nó (ou seja, sem nenhuma bifurcação) podemos analisar a relação entre a resistência de seus resistores e a voltagem pela corrente que percorre o circuito usando a famosa relação de Ohm:
+
+
+\begin{equation}
+\label{eq:resist}
+ V =  R \, I
+\end{equation}
+
+
+
+%------------------------------------------------
+Entretanto, quando temos circuitos mais complexos com diversas malhas e bifurcações temos que usar leis de conservação de energia e carga para encontrar todos os valores desejados.Essas regras são conhecidas como Regras de Kirchhoff, nomeada pelas grandes contribuições de Gustav Kirchhoff para o entendimento dos circuitos elétricos. Essas regras podem ser resumidas da seguinte forma:
+
+
+
+\begin{notalistitem}
+Conservação de Energia: Em uma malha do circuito, a soma das forças eletromotrizes é igual a soma das diferenças de potencial nos demais elementos constituintes da malha:
+
+
+\begin{equation}
+\label{eq:resist}
+     \sum_{k=1}^{N} U_{k}=0 
+\end{equation}
+
+$U_k$ nesse caso é a diferença de pontencial em uma parte do percurso fechado.
+
+\end{notalistitem}
+
+\begin{notalistitem}
+Conservação de carga:  A soma das correntes que chegam de um nó de um circuito é igual a soma das correntes que saem desse nó:
+
+\end{notalistitem}
+
+
+
+\begin{equation}
+\label{eq:resist}
+     \sum_{k=1}^{N} i_{k}= 0 
+\end{equation}
+
+$i_k$ nesse caso é uma das correntes com indice variando que passa entra e sai pelo nó ao longo do percurso fechado.  
+
+
+Assim, o objetivo do experimento é validar se as regras de Kirchhoff são realmente válidas. Para isso é iremos montar um circuito semelhante a figura 1.
+
+Ao aplicar as regras de Kirchhoff temas três equações e três variaveis que podem ser resolvidas facilemnte e a partir da resolução das equações relacionar com os valores encontrados experimentalmente.
+
+
+
+
+
+    
+\begin{figure}
+     
+      \includegraphics[width=8cm,height=5cm\textbf{}]{01.png}
+    \caption{Circuito composto por 3 malhas - ABEFA, BCDEB e ABCDEFA e dois nós B e E}
+    \label{fig:my_label}
+\end{figure}
+
+
+
+
+
+\section{Metodologia}
+
+
+Foram utilizados os seguintes materiais para realizar o experimento:
+
+\begin{itemize}
+\item Fonte de tensão com valores $\varepsilon_{1} = \SI{6.5}{\volt}$ e $\varepsilon_{2} = \SI{3}{\volt}$ respectivamente.
+\item Multímetro e painel para conexões
+\item Resistores para montar o circuito tendo suas respectivas resistências : $R_1 = \SI{6.5}{\ohm}$, $R_2= \SI{6}{\ohm} $ e $R_3 = \SI{9}{\ohm}$ respectivamente. 
+	\end{itemize}
+% Dummy text
+
+
+
+%Text requiring further explanation\footnote{Example footnote}.
+
+%------------------------------------------------
+
+\section{Resultados}
+
+Temos três equações no total: 
+
+
+
+\begin{equation}
+\label{eq:resist}
+     I_{1}=I_{2}+I_{3} 
+\end{equation}
+
+Ao aplicar a regra dos nóis no ponto B.
+
+
+\begin{equation}
+\label{eq:resist}
+\varepsilon_{1}=I_{1} R_{1}+I_{2} R_{2}
+\end{equation}
+Ao aplicar a regra das malhas para ABEFA
+
+
+\begin{equation}
+\label{eq:resist}
+\varepsilon_{2}=-I_{2} R_{2}+I_{3} R_{3}
+\end{equation}
+Ao aplicar a regra das malhas para BCDEB. 
+
+
+
+Ao substituir 4 em 5 ficamos com um sistema linear de 2 incognitas:
+\[
+\syslineskipcoeff{1}
+\systeme*{\varepsilon_{1}= I_{2}R_1 + I_{2} R_2 + I_{3}R_1, \varepsilon_{2}= -I_{2}R_2 + I_{3}R_3}
+\]
+
+Ao simplificar o sistema de equações lineares foi possivel encontrar os valores para as correntes e posteriormente os valores de diferença de potencial ao usar a relação de Ohm da 1 equação:
+
+\begin{table}[ht]
+\centering
+\caption{Valores encontrado por meio das equações ao resolver o sistema linear}
+\begin{tabular}[t]{lccr}
+\toprule
+Corrente $I (\SI{}{\ampere})$    & Voltagem$V(\SI{}{\volt})$ \\
+\midrule
+I_1 = \SI{0.7623}{\ampere} & V_1 = 4.955 \\
+I_2 = \SI{0.2574}{\ampere} & V_2 = 1.544 \\
+I_3 = \SI{0.5049}{\ampere} & V_3 = 4.545 \\
+    
+\bottomrule
+\end{tabular}
+\end{table}%
+
+Ao montar o circuito no laboratório online conforme a imagem da figura 1 temos os resultados das correntes verificadas experimentalmente.
+
+\begin{figure}
+     
+      \includegraphics[width=8cm,height=5cm\textbf{}]{02.png}
+    \caption{Circuito montado em laboratório testado e compravado internacionalmente.}
+    \label{fig:my_label}
+\end{figure}
+
+
+
+%%\begin{table}
+%\caption{Example table}
+%\centering
+%\begin{tabular}{llr}
+%\toprule
+%\multicolumn{2}{c}{Name} \\
+%\cmidrule(r){1-2}
+%First name & Last Name & Grade \\
+%\midrule
+%J%ohn & Doe & $7.5$ \\
+%R%ichard & Miles & $2$ \\
+%\bottomrule
+%%\end{tabular}
+%\end{table}
+
+
+
+%\begin{equation}
+%\label{eq:emc}
+%e = mc^2
+%\end{equation}
+
+%\blindtext % Dummy text
+
+%\end{multicols}
+
+%\subsection{Gráfico}
+
+%\begin{figure}[h]
+%  \includegraphics[width=\textwidth,height=8cm]{rVl2.png}
+%  \caption{This is a tiger.}
+%\end{figure}
+
+
+%Essse grafico deveria 
+%\begin{figure*}
+	  %  \includegraphics[width=\textwidth,height=8cm]{rVl2.png}
+	   %  \caption{Gráfico com os dados plotados e a regresão linear feita}
+
+%\end{figure*}
+
+
+%Essse grafico MINGAU deveria estar acima de mim.
+%\begin{multicols}{2}
+
+
+%------------------------------------------------
+
+\section{Discussão}
+
+\subsection{Os valores encontrados}
+
+Vendo a tabela de valores de resistividade de alguns materiais, dada no guia de experimento,
+\begin{table}[ht]
+\centering
+\caption{Exemplos de valores da resistividade de alguns materiais}
+\begin{tabular}[t]{lccr}
+\toprule
+Material    &Resistividade $ \rho  (\SI{}10^{-8}\,\SI{}{\ohm \, \meter}) $ \\
+\midrule
+   Cobre&$\SI{1,72(1)}{}$\\
+   Ouro&$\SI{2,44(2)}{}$\\
+   Alumínio&$\SI{2,82(2)}{}$\\
+   Tungstênio&$\SI{5,6(1)}{}$\\
+   Ferro&$\SI{10,0(3)}{}$\\
+    Liga cobre-níquel&$\SI{44(1)}{}$\\
+    Liga níquel-cromo&$\SI{100(5)}{}$\\
+    Liga Kanthal&$\SI{139(4)}{}$\\
+    Carbono&$\cong3500$\\
+
+    
+\bottomrule
+\end{tabular}
+\end{table}%
+
+encontramos a liga Kanthal com $$ \rho =  \SI{1,39(4)}10^{-6}\,\SI{}{\ohm \, \meter} $$ Este valor está razoavelmente próximo do que encontramos, especialmente se considerarmos a larga incerteza da nossa medida. O que nos leva a concluir que o material sob investigação provavelmente é feito de liga Kanthal.
+
+
+\subsection{A estimativa do erro}
+
+Um dos aspectos que mais chamou nossa atenção foi a propagação de erro. Notamos que nos foi dado o diâmetro do fio:
+$$ {\phi} =  \SI{0,25(5)}\,\SI{}{\mm} $$
+Ora, isto corresponde a 20\% de margem de erro. Fazemos então o cálculo da área, com a correspondente incerteza.
+
+$$\Delta A = \frac{dA}{d\phi}\Delta \phi=\frac{\pi \phi}{2}\Delta \phi= (1.96)10^{-8}  \SI{}{\, \meter\squared}$$ 
+
+Obtemos com isto 39.9\% de erro, uma expressiva propagação de erro.
+Por outro lado, tão alto percentual de erro não chega a seriamente ameaçar a estimativa de material, pois ao se tratar de resistividade os materiais podem variar em muitas ordens de grandeza. Mesmo com esta alta taxa, na tabela de referências só a liga níquel-cromo, com $\SI{1.00(5)}10^{-6}\SI{}{\ohm \, \meter}$, é uma possível alternativa.
+
+%Concluímos: ALL HAIL BAETA
+
+\section{Conclusão}
+
+O experimento foi um sucesso e mostrou muito bem a relação entre a resistividade de um material (em temperatura ambiente) com a sua resistência e comprimento.  
+% \begin{equation}
+% \label{eq:delA}
+% \Delta A = \frac{dA}{d\phi}\Delta \phi=\frac{\pi d}{2}\Delta \phi= (1.96)10^{-8}
+% \end{equation}
+% \section{Conclusão}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+%\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+
+%\bibitem  [Figueredo and Wolf, 2009]{Figueredo:2009dg}
+%        Figueredo, A.~J. and Wolf, P. S.~A. (2009).
+%\newblock All hail Baeta - a cross-cultural
+%  study.
+%\newblock{\em Human Nature}, 20:317--330.
+
+%\end{thebibliography}
+\section{Gráfico}
+%\begin{center}
+
+%    \includegraphics[width=\textwidth,height=8cm]{rVl2.png}
+%\captionof{figure}{Gráfico com os dados plotados e a regresão linear feita}\label{fg1}      only if needed  
+%    \caption{Gráfico com os dados plotados e a regresão linear feita}
+%\end{center}
+
+\begin{center}
+    
+
+\begin{minipage}{\textwidth}% to keep image and caption on one page
+\makebox[\textwidth]{%        to center the image
+  \includegraphics[width=\textwidth,height=8cm\textbf{}]{rVl2.png}}
+\captionof{figure}{Gráfico com os dados plotados e a regresão linear feita.}\label{visina8}%      only if needed  
+\end{minipage}
+
+\end{center}
+%\begin{figure*}[h]
+% maybe other stuff
+
+%\includegraphics[width=\textwidth,height=8cm]{rVl2.png}% example only, could also be \adjustimage
+% \caption{Gráfico com os dados plotados e a regresão linear feita}
+% maybe other stuff
+%\end{figure*}
+%\begin{figure}
+        %\centering
+%	     \includegraphics[width=\textwidth,height=8cm]{rVl2.png}
+%	     \caption{Gráfico com os dados plotados e a regresão linear feita}
+
+%\end{figure}
+%----------------------------------------------------------------------------------------
+%\end{multicols}
+
+\end{document}
+
+
